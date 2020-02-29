@@ -28,11 +28,11 @@ export default class App extends Component {
 					<label>Choose Date</label>
 					<div>
 						<input id="input-field" value={this.state.date} onClick={this.toggleCalendar} />
+						<button>Submit</button>
 					</div>
 					{this.state.opened && (
-						<Calendar onChange={this.handleDateChange} value={this.state.date} className="react-calendar" />
+						<Calendar className="react-calendar" onChange={this.handleDateChange} value={this.state.date} />
 					)}
-					<button>Submit</button>
 				</form>
 			</div>
 		);

@@ -10,5 +10,15 @@ body {
 	border: 1px solid black;
 	z-index: 1;
 	background-color: white;
+	display: relative;
 	/* display: inline-block; */
+}
+
+input {
+	width: 100%;
+}
+
+.react-calendar {
+	margin-left: 230px;
+	margin-top: -15px;
 }
