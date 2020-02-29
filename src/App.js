@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Calendar from 'react-calendar';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends Component {
+	state = {
+		opened: false,
+		date: null
+	};
 
-export default App;
+	handleDateChange = (date) => {
+		this.setState({
+			date,
+			opened: false
+		});
+	};
+
+	toggleCalendar = () => {
+		this.setState({
+			opened: !this.state.opened
+		});
+	};
+
+	render() {
+		return (
+			<div>
+				<form className="date-form">
+					<label>Choose Date</label>
+					<div>
+						<input id="input-field" value={this.state.date} onClick={this.toggleCalendar} />
+					</div>
+					{this.state.opened && (
+						<Calendar onChange={this.handleDateChange} value={this.state.date} className="react-calendar" />
+					)}
+					<button>Submit</button>
+				</form>
+			</div>
+		);
+	}
+}
